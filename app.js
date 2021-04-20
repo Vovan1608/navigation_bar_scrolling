@@ -23,3 +23,13 @@ navToggle.addEventListener("click", () => {
 });
 
 // -------- fixed navbar --------
+const navbar = document.getElementById("nav");
+const topLink = document.querySelector(".top-link");
+
+window.addEventListener("scroll", () => {
+	const scrollHeight = window.pageYOffset;
+	const navHeight = navbar.getBoundingClientRect().height;
+
+	scrollHeight > navHeight ? navbar.classList.add("fixed-nav") : navbar.classList.remove("fixed-nav");
+	scrollHeight > 500 ? topLink.classList.add("show-link") : topLink.classList.remove("show-link");
+});
