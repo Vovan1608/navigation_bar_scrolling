@@ -33,3 +33,24 @@ window.addEventListener("scroll", () => {
 	scrollHeight > navHeight ? navbar.classList.add("fixed-nav") : navbar.classList.remove("fixed-nav");
 	scrollHeight > 500 ? topLink.classList.add("show-link") : topLink.classList.remove("show-link");
 });
+
+// --------- smooth scroll ---------
+const scrollLinks = document.querySelectorAll(".scroll-link");
+
+scrollLinks.forEach(link => {
+	link.addEventListener("click", (e) => {
+		// preventDefault - not recommend
+		e.preventDefault();
+		// navigate to specific spot - recommend
+		const id = e.currentTarget.getAttribute("href").slice(1);
+		const element = document.getElementById(id);
+		//offsetTop - A Number, representing the top position of the element, in pixels
+		let position = element.offsetTop;
+
+		window.scrollTo({
+			left: 0, top: position
+		});
+		// close links
+		linksContainer.style.height = 0;
+	});
+});
